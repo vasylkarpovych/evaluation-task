@@ -1,71 +1,44 @@
-const data = {
-  input: {
-    distance: {
-      unit: "cm",
-      value: 50,
-    },
-    convert_to: "in",
-  },
-  metrics: {
-    m: {
-      cm: 100,
-      in: 39.37,
-      ft: 3.28,
-    },
-  },
+function Metrics(unit, value) {
+  this.unit = unit;
+  this.value = value;
+}
+
+Metrics.prototype.toString = function metricsToString() {
+  return `${this.unit}=${this.value}`;
 };
 
+// Our database
+const database = [
+  new Metrics("cm", 100),
+  new Metrics("in", 39.37),
+  new Metrics("ft", 3.28),
+  new Metrics("m", 1),
+];
+
 function convert() {
-  let unit = data.input.distance.unit;
-  let value = data.input.distance.value;
-  let convert = data.input.convert_to;
-  switch (unit) {
-    case "cm":
-      value = value / data.metrics.m.cm;
-      break;
-    case "in":
-      value = value / data.metrics.m.in;
-      break;
-    case "ft":
-      value = value / data.metrics.m.ft;
-      break;
-    case "m":
-      break;
-    default:
-      alert("Нет таких значений"); //на анлг нет такого измерения
+  let unit = document.querySelector(".unit-input").value;
+  let value = document.querySelector(".value-input").value;
+  let convert = document.querySelector(".convert-input").value;
+  if (
+    database.some((metrics) => metrics.unit === unit) &&
+    database.some((metrics) => metrics.unit === convert)
+  ) {
+    document.querySelector(".result").innerHTML =
+      (value / database.find((metrics) => metrics.unit === unit).value) *
+      database.find((metrics) => metrics.unit === convert).value;
+  } else {
+    document.querySelector(".result").innerHTML =
+      "Unknown unit. Pelase verify input.";
   }
-
-  let result;
-  switch (convert) {
-    case "cm":
-      result = value * data.metrics.m.cm;
-      break;
-    case "in":
-      result = value * data.metrics.m.in;
-      break;
-    case "ft":
-      result = value * data.metrics.m.ft;
-      break;
-    case "m":
-      result = value;
-      break;
-    default:
-      alert("Нет таких значений"); //на анлг нет такого измерения
-  }
-  document.querySelector(".result").innerHTML = result;
 }
 
-document.querySelector(".button").onclick = convert;
-
-function myClick() {
-  let myText = document.querySelector(".input").value;
-  let arrayCount = Array.from(myText);
-  document.querySelector(".result").innerHTML = arrayCount.length;
-  console.log(input);
-  console.log(metrics);
+function addUnit() {
+  let unit = document.querySelector(".unit-creation-input").value;
+  let value = document.querySelector(".value-creation-input").value;
+  database.push(new Metrics(unit, value));
+  document.querySelector(".result").innerHTML = database;
 }
 
-//прочитать файл input.json в объект,
-//прочитать файл metrics.json в объект,
-//конвертировать и выдать результат в поле просмотра результата в виде JSON
-//
+document.querySelector(".result").innerHTML = database;
+document.querySelector(".convert-button").onclick = convert;
+document.querySelector(".save-unit-button").onclick = addUnit;
