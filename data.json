@@ -1,0 +1,15 @@
+{
+  distance: {
+    unit: "m",
+    value: 0.5
+  },
+  convert_to: "ft"
+}
+
+{
+  m: {
+    cm: 100,
+    in: 39.37,
+    ft: 3.28
+  }
+}
