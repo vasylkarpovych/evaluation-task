@@ -7,27 +7,40 @@
   </head>
   <body>
     <h1>First Task:</h1>
-    <p>
-      Для работы данной задачи необходимо изменить файл input.json вставив
-      внутрь условие для конвертации в формате JSON заменив только значания
+    <hr />
+    <p style="font-size: 70%;">
+      Для работы данной задачи необходимо изменить данные формата JSON превратив
+      это в обычный объект, далее написать две функции, одна будет
+      конвертировать длину, а другая даст возможность добавлять новые велечины
+      для конвертации.
     </p>
-    <input type="text" class="unit-creation-input" />
-    <input type="number" class="value-creation-input" />
-    <button class="save-unit-button">Save</button>
-    <div>
-      <p>Units:</p>
-      <p type="text" class="units"></p>
-    </div>
+    <hr />
+    <p style="font-size: 70%;">
+      Выберите единицы измрения, затем введите длину, после нажмите к каким единицам измереня вы хотите конвертировать Ваши значения. Когда все заполненно, нажмите кнопку конвертировать, ниже будет выведен результат работы программы.
+      <hr>
     <p>Enter numbers:</p>
-    <input type="text" class="unit-input" />
-    <input type="number" class="value-input" />
-    <input type="text" class="convert-input" />
-    <button class="convert-button">Convert</button>
+    <input type="text" class="unit-input" placeholder="cm, m, ft, in ... other"/>
+      <input type="number" class="value-input" placeholder="Введите длину"/>
+      <p>Результат:</p>
+      <input type="text" class="convert-input" placeholder="cm, m, ft, in ... other"/>
+      <button class="convert-button" style="background-color: greenyellow;">Convert</button><br>
     <div>
       <p>Convertion result:</p>
       <p type="text" class="result"></p>
+      <p>Result of conversion to 1 meter:</p>
+      <p type="text" class="resultMeter"></p>
+
     </div>
     <hr />
+  </p>
+  <input type="text" class="unit-creation-input" />
+  <input type="number" class="value-creation-input" />
+  <button class="save-unit-button">Save</button> 
+  <div>
+    <p>Units:</p>
+    <p type="text" class="units"></p>
+  </div> 
+    <!-- <script src="main.js"></script> -->
     <script src="main.js"></script>
   </body>
 </html>
