@@ -138,6 +138,37 @@
 8-9=-1=1 получается, что мы отнимаем половину от большего = 9-0,5 = 8,5 ...отбрасываем десятичные, и получаем искомые результат, посчитали операции, все готово!
 */
 
+console.log(`Random array [x, y, z]`);
+const userArrayES6 = [0, 0, 0];
+
+const newNumber = userArrayES6.map((user) => {
+  return (userArrayES6[user] = Math.trunc(Math.random() * 100));
+});
+console.log(newNumber);
+
+console.log(`User array [x, y, z]`);
+let x = 10,
+  y = 20,
+  z = 50;
+const userArray = [x, y, z];
+console.log(userArray);
+
+userArray.forEach((element) => {
+  console.log(`User element: ${element}`);
+});
+
+function equalityChek() {
+  if (JSON.stringify(userArrayES6) === JSON.stringify(userArray)) {
+    console.log(`Наши массивы изначально равны`);
+  } else {
+    console.log(`Наши массивы не равны`);
+  }
+}
+
+equalityChek();
+
+function search() {}
+
 /*мы берем первый элемент рандомного массива, и сравнимаем его с первым элементов заданого массива
 
 Два варианта:
@@ -168,25 +199,9 @@
 
 
 */
-console.log(`Random array [x, y, z]`);
-const userArrayES6 = [0, 0, 0];
-
-const newNumber = userArrayES6.map((user) => {
-  return (userArrayES6[user] = Math.trunc(Math.random() * 100));
-});
-console.log(newNumber);
-
-console.log(`User array [x, y, z]`);
-let x = 10,
-  y = 75,
-  z = 50;
-const userArray = [x, y, z];
-console.log(userArray);
-
 console.log(`TEST`);
 
 let user = [10, 75, 50];
-// Это я создал массив, для того, чтоб удобно считать с фиксированными значениями, потом просто его удалю! Пока работаю с фиксированными значниями, когда все будет работать, я просто подставлю числа, что будут сгенирированы случайно
 let ran = [91, 15, 45];
 let xRan = ran[0];
 let yRan = ran[1];
@@ -195,6 +210,11 @@ let calc = 0;
 
 //Math.trunc() - обрезает дробную часть числа
 //Math. round() возвращает число, округлённое к ближайшему целому
+
+// for (let i = 0; i < user.length; i++) {
+//   user[i] = user[i]-;
+// }
+function half(xUser, yUser, zUser) {}
 
 console.log("Миссив, что здал пользователь: " + user);
 console.log("Массив, который сгенерировал компьютер: " + ran);
@@ -226,6 +246,102 @@ function compareArray() {
   }
 }
 
+// console.log(Math.trunc(-12.5));
+// console.log(Math.round(-12.5 - 1));
+
+// console.log(Math.trunc(12.5));
+// console.log(Math.round(12.5));
+
 compareArray();
+
+//умножить каждый елемент массива на 2
+
+// for (let i = 0; i < a.length; i++) {
+
+// }
+// console.log(a[1]);
+
+// let b = a.map(function(currentValue, indet, array){
+//   return gogogo;
+// });
+
+// let c = a.map(function (x, y) {
+//   console.log(y);
+//   return x;
+// });
+// console.log(c);
+
+// console.log("YouTube practics:");
+
+// for (let n = 3; n <= 100; n++) {
+//   let flag = true;
+
+//   for (a = 2; a < n; a++) {
+//     if (n % a === 0) {
+//       flag = false;
+//       break;
+//       console.log("wowowo");
+//     }
+//   }
+
+//   if (flag) {
+//     console.log(n + " - простое число");
+//   } else {
+//     console.log(n + " - составное число");
+//   }
+// }
+
+// for (let y = 1; y <= 5; y++) {
+//   let row = "";
+
+//   for (let x = 1; x <= 10; x++) {
+//     row += x * y + "\t";
+//   }
+
+//   console.log(row);
+// }
+
+// let counter = 0;
+// for (let i = 0; i < 5; i++) {
+//   for (let j = 0; j < 5; j++) {
+//     for (let k = 0; k < 5; k++) {
+//       counter++;
+//       console.log(i, j, k);
+//     }
+//   }
+// }
+// console.log(counter);
+
+//1
+//2  2
+//3  3  3
+//4  4  4  4
+
+// for (let n = 1; n < 10; n++) {
+//   let str = "";
+//   for (i = 1; i <= n; i++) {
+//     str += n + " ";
+//   }
+//   console.log(str);
+// }
+
+// for (let i = 0; i < 100; i++) {
+//   if (i % 7 === 0) {
+//     continue;
+//   }
+//   console.log(i);
+// }
+
+// mainloop: for (let i = 0; i < 5; i++) {
+//   for (let j = 0; j < 5; j++) {
+//     for (let k = 0; k < 5; k++) {
+//       console.log(i, j, k);
+
+//       if (i * j * k >= 10) {
+//         break mainloop;
+//       }
+//     }
+//   }
+// }
 
 //Task Four
