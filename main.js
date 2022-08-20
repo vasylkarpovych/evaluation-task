@@ -79,7 +79,7 @@ Person.prototype.toString = function personToString() {
   return `${this.name}-${this.email}-${this.user}-${this.rating}-${this.diasbled}`;
 };
 
-const include = { name: "John", disabled: false };
+const include = { name: "John" };
 
 console.log(personDatabase);
 
@@ -100,7 +100,7 @@ function includeFunction() {
 }
 console.log(includeFunction());
 
-const exclude = { diasbled: true };
+const exclude = { disabled: true };
 
 function excludeFunction() {
   Object.keys(exclude).forEach((key) => {
