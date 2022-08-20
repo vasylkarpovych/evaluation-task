@@ -84,6 +84,8 @@ const include = { name: "John" };
 console.log(personDatabase);
 
 //сделать фильтрацию массива объектов, мы принимаем ключ-значение NAME и возращаем результат все варианты электронной почты этого имени
+let personDatabaseInclude = [];
+let personDatabaseExclude = [];
 
 function includeFunction() {
   //   console.log(personDatabase);
@@ -94,9 +96,9 @@ function includeFunction() {
         result.push(person);
       }
     });
-    personDatabase = result;
+    personDatabaseInclude = result;
   });
-  console.log(personDatabase);
+  console.log(personDatabaseInclude);
 }
 console.log(includeFunction());
 
@@ -110,9 +112,9 @@ function excludeFunction() {
         result.push(person);
       }
     });
-    personDatabase = result;
+    personDatabaseExclude = result;
   });
-  console.log(personDatabase);
+  console.log(personDatabaseExclude);
 }
 
 console.log(excludeFunction());
