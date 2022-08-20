@@ -1,124 +1,133 @@
-// function Metrics(unit, value) {
-//   this.unit = unit;
-//   this.value = value;
-// }
+console.log("First Task:");
 
-// Metrics.prototype.toString = function metricsToString() {
-//   return `${this.unit}=${this.value}`;
-// };
+function Metrics(unit, value) {
+  this.unit = unit;
+  this.value = value;
+}
 
-// // our database, JSON format:
+Metrics.prototype.toString = function metricsToString() {
+  return `${this.unit}=${this.value}`;
+};
 
-// const jsonStringFirstJSON =
-//   '[{"unit":"cm","value":100},{"unit":"m","value":1},{"unit":"ft","value":3.28},{"unit":"in","value":39.37}]';
+// our database, JSON format:
 
-// const databaseFirstNoJson = [
-//   new Metrics("cm", 100),
-//   new Metrics("in", 39.37),
-//   new Metrics("ft", 3.28),
-//   new Metrics("m", 1),
-// ];
+const jsonStringFirstJSON =
+  '[{"unit":"cm","value":100},{"unit":"m","value":1},{"unit":"ft","value":3.28},{"unit":"in","value":39.37}]';
 
-// const databaseFirst = JSON.parse(jsonStringFirstJSON);
+const databaseFirstNoJson = [
+  new Metrics("cm", 100),
+  new Metrics("in", 39.37),
+  new Metrics("ft", 3.28),
+  new Metrics("m", 1),
+];
 
-// console.log(databaseFirst);
-// console.log(databaseFirstNoJson);
+const databaseFirst = JSON.parse(jsonStringFirstJSON);
 
-// function convert() {
-//   let unit = document.querySelector(".unit-input").value;
-//   let value = document.querySelector(".value-input").value;
-//   let convert = document.querySelector(".convert-input").value;
+console.log(databaseFirst);
+console.log(databaseFirstNoJson);
 
-//   if (
-//     databaseFirst.some((metrics) => metrics.unit === unit) &&
-//     databaseFirst.some((metrics) => metrics.unit === convert)
-//   ) {
-//     document.querySelector(".result").innerHTML =
-//       (value / databaseFirst.find((metrics) => metrics.unit === unit).value) *
-//       databaseFirst.find((metrics) => metrics.unit === convert).value;
-//   } else {
-//     document.querySelector(".result").innerHTML =
-//       "Unknown unit. Pelase verify input.";
+function convert() {
+  let unit = document.querySelector(".unit-input").value;
+  let value = document.querySelector(".value-input").value;
+  let convert = document.querySelector(".convert-input").value;
+
+  if (
+    databaseFirst.some((metrics) => metrics.unit === unit) &&
+    databaseFirst.some((metrics) => metrics.unit === convert)
+  ) {
+    document.querySelector(".result").innerHTML =
+      (value / databaseFirst.find((metrics) => metrics.unit === unit).value) *
+      databaseFirst.find((metrics) => metrics.unit === convert).value;
+  } else {
+    document.querySelector(".result").innerHTML =
+      "Unknown unit. Pelase verify input.";
+  }
+}
+
+function addUnit() {
+  let unit = document.querySelector(".unit-creation-input").value;
+  let value = document.querySelector(".value-creation-input").value;
+  databaseFirst.push(new Metrics(unit, value));
+  document.querySelector(".resultMeter").innerHTML = databaseFirst;
+}
+
+document.querySelector(".resultMeter").innerHTML = databaseFirst;
+document.querySelector(".convert-button").onclick = convert;
+document.querySelector(".save-unit-button").onclick = addUnit;
+
+//Second Task
+console.log("Second Task");
+
+function Person(name, email, user, rating, disabled) {
+  this.name = name;
+  this.email = email;
+  this.user = user;
+  this.rating = rating;
+  this.disabled = disabled;
+}
+
+let personDatabase = [
+  new Person("John", "john1@mail.com", "john1@mail.com", 25, true),
+  new Person("John", "john2@mail.com", "john2@mail.com", 26, false),
+  new Person("John", "john3@mail.com", "john3@mail.com", 28, false),
+  new Person("Jane", "jane@mail.com", "jane@mail.com", 27, true),
+  new Person("Mike", "mike@mail.com", "mike@mail.com", 20, false),
+  new Person("Greg", "greg@mail.com", "greg@mail.com", 14, false),
+];
+
+Person.prototype.toString = function personToString() {
+  return `${this.name}-${this.email}-${this.user}-${this.rating}-${this.diasbled}`;
+};
+
+const include = { name: "John", disabled: false };
+
+console.log(personDatabase);
+
+//сделать фильтрацию массива объектов, мы принимаем ключ-значение NAME и возращаем результат все варианты электронной почты этого имени
+
+function includeFunction() {
+  //   console.log(personDatabase);
+  Object.keys(include).forEach((key) => {
+    let result = [];
+    personDatabase.forEach((person) => {
+      if (person[key] === include[key]) {
+        result.push(person);
+      }
+    });
+    personDatabase = result;
+  });
+  console.log(personDatabase);
+}
+console.log(includeFunction());
+
+const exclude = { diasbled: true };
+
+function excludeFunction() {
+  Object.keys(exclude).forEach((key) => {
+    let result = [];
+    personDatabase.forEach((person) => {
+      if (person[key] !== exclude[key]) {
+        result.push(person);
+      }
+    });
+    personDatabase = result;
+  });
+  console.log(personDatabase);
+}
+
+console.log(excludeFunction());
+//сделать фильтрацию массива объектов, мы принимаем ключ-значение DISABLET допускается ли человек к работе, и возращаем все варианты, где человек не допускается, значение FALSE
+
+// let newListDelete = [];
+
+// for (let j of dataPerson) {
+//   if (j.disabled == false) {
+//     newListDelete.push(j);
 //   }
 // }
+// console.log(newListDelete);
 
-// function addUnit() {
-//   let unit = document.querySelector(".unit-creation-input").value;
-//   let value = document.querySelector(".value-creation-input").value;
-//   databaseFirst.push(new Metrics(unit, value));
-//   document.querySelector(".resultMeter").innerHTML = databaseFirst;
-// }
-
-// document.querySelector(".resultMeter").innerHTML = databaseFirst;
-// document.querySelector(".convert-button").onclick = convert;
-// document.querySelector(".save-unit-button").onclick = addUnit;
-
-// //Second Task
-
-// function Person(name, email, user, rating, disabled) {
-//   this.name = name;
-//   this.email = email;
-//   this.user = user;
-//   this.rating = rating;
-//   this.disabled = disabled;
-// }
-
-// let personDatabase = [
-//   new Person("John", "john1@mail.com", "john1@mail.com", 25, true),
-//   new Person("John", "john2@mail.com", "john2@mail.com", 26, false),
-//   new Person("John", "john3@mail.com", "john3@mail.com", 28, false),
-//   new Person("Jane", "jane@mail.com", "jane@mail.com", 27, true),
-//   new Person("Mike", "mike@mail.com", "mike@mail.com", 20, false),
-//   new Person("Greg", "greg@mail.com", "greg@mail.com", 14, false),
-// ];
-
-// Person.prototype.toString = function personToString() {
-//   return `${this.name}-${this.email}-${this.user}-${this.rating}-${this.diasbled}`;
-// };
-
-// const include = { name: "John", disabled: false };
-
-// console.log(personDatabase);
-
-// //сделать фильтрацию массива объектов, мы принимаем ключ-значение NAME и возращаем результат все варианты электронной почты этого имени
-
-// function include() {
-//   //   console.log(personDatabase);
-//   Object.keys(include).forEach((key) => {
-//     let result = [];
-//     personDatabase.forEach((person) => {
-//       if (person[key] === include[key]) {
-//         result.push(person);
-//       }
-//     });
-//     personDatabase = result;
-//   });
-//   console.log(personDatabase);
-// }
-
-// // let newListName = [];
-
-// // for (let i of dataPersonEmail) {
-// //   if (i.name == "John") {
-// //     newListName.push(i);
-// //   }
-// // }
-// // console.log(newListName);
-
-// // //сделать фильтрацию массива объектов, мы принимаем ключ-значение DISABLET допускается ли человек к работе, и возращаем все варианты, где человек не допускается, значение FALSE
-
-// // let newListDelete = [];
-
-// // for (let j of dataPerson) {
-// //   if (j.disabled == false) {
-// //     newListDelete.push(j);
-// //   }
-// // }
-// // console.log(newListDelete);
-
-// console.log(include());
-
-// //Third Task
+//Third Task
 
 /* 
 Алгоритм для решения третей задачи:
