@@ -1,5 +1,3 @@
-console.log("First Task:");
-
 function Metrics(unit, value) {
   this.unit = unit;
   this.value = value;
@@ -9,22 +7,14 @@ Metrics.prototype.toString = function metricsToString() {
   return `${this.unit}=${this.value}`;
 };
 
-// our database, JSON format:
-
-const jsonStringFirstJSON =
+const firstTaskJson =
   '[{"unit":"cm","value":100},{"unit":"m","value":1},{"unit":"ft","value":3.28},{"unit":"in","value":39.37}]';
 
-const databaseFirstNoJson = [
-  new Metrics("cm", 100),
-  new Metrics("in", 39.37),
-  new Metrics("ft", 3.28),
-  new Metrics("m", 1),
-];
-
-const databaseFirst = JSON.parse(jsonStringFirstJSON);
-
-console.log(databaseFirst);
-console.log(databaseFirstNoJson);
+//сделать чтоб через одну переменную. САМ
+const database = [];
+JSON.parse(firstTaskJson).forEach((metric) => {
+  database.push(new Metrics(metric["unit"], metric["value"]));
+});
 
 function convert() {
   let unit = document.querySelector(".unit-input").value;
@@ -32,12 +22,12 @@ function convert() {
   let convert = document.querySelector(".convert-input").value;
 
   if (
-    databaseFirst.some((metrics) => metrics.unit === unit) &&
-    databaseFirst.some((metrics) => metrics.unit === convert)
+    database.some((metrics) => metrics.unit === unit) &&
+    database.some((metrics) => metrics.unit === convert)
   ) {
     document.querySelector(".result").innerHTML =
-      (value / databaseFirst.find((metrics) => metrics.unit === unit).value) *
-      databaseFirst.find((metrics) => metrics.unit === convert).value;
+      (value / database.find((metrics) => metrics.unit === unit).value) *
+      database.find((metrics) => metrics.unit === convert).value;
   } else {
     document.querySelector(".result").innerHTML =
       "Unknown unit. Pelase verify input.";
@@ -47,11 +37,11 @@ function convert() {
 function addUnit() {
   let unit = document.querySelector(".unit-creation-input").value;
   let value = document.querySelector(".value-creation-input").value;
-  databaseFirst.push(new Metrics(unit, value));
-  document.querySelector(".resultMeter").innerHTML = databaseFirst;
+  database.push(new Metrics(unit, value));
+  document.querySelector(".resultMeter").innerHTML = database;
 }
 
-document.querySelector(".resultMeter").innerHTML = databaseFirst;
+document.querySelector(".resultMeter").innerHTML = database;
 document.querySelector(".convert-button").onclick = convert;
 document.querySelector(".save-unit-button").onclick = addUnit;
 
@@ -68,7 +58,7 @@ function Person(name, email, user, rating, disabled) {
 
 let personDatabase = [
   new Person("John", "john1@mail.com", "john1@mail.com", 25, true),
-  new Person("John", "john2@mail.com", "john2@mail.com", 26, false),
+  new Person("John", "john2@mail.com", "john2@mail.com", 23, false),
   new Person("John", "john3@mail.com", "john3@mail.com", 28, false),
   new Person("Jane", "jane@mail.com", "jane@mail.com", 27, true),
   new Person("Mike", "mike@mail.com", "mike@mail.com", 20, false),
@@ -79,45 +69,68 @@ Person.prototype.toString = function personToString() {
   return `${this.name}-${this.email}-${this.user}-${this.rating}-${this.diasbled}`;
 };
 
-const include = { name: "John" };
+const include = [{ name: "John" } /*{ email: "john1@mail.com" }*/];
+const exclude = [{ name: "John" } /*{ email: "john1@mail.com" }*/];
+const sort = { sort_by: "rating" };
+const condition = { include, exclude, sort };
 
 console.log(personDatabase);
 
 //сделать фильтрацию массива объектов, мы принимаем ключ-значение NAME и возращаем результат все варианты электронной почты этого имени
-let personDatabaseInclude = [];
-let personDatabaseExclude = [];
+// let result = [];
+// let data2 = [];
 
 function includeFunction() {
-  //   console.log(personDatabase);
-  Object.keys(include).forEach((key) => {
-    let result = [];
-    personDatabase.forEach((person) => {
-      if (person[key] === include[key]) {
-        result.push(person);
-      }
+  let result = personDatabase.slice();
+  condition.include.forEach((inc) => {
+    Object.keys(inc).forEach((key) => {
+      result.forEach((person) => {
+        if (person[key] !== inc[key]) {
+          result.splice(result.indexOf(person));
+        }
+      });
     });
-    personDatabaseInclude = result;
   });
-  console.log(personDatabaseInclude);
+  result.sort((a, b) => a[condition.sort.sort_by] - b[condition.sort.sort_by]);
+  console.log(result);
 }
 console.log(includeFunction());
+document.querySelector(".personDatabase").innerHTML = personDatabase;
+document.querySelector(".includeFunction").innerHTML = toString(
+  includeFunction()
+);
 
-const exclude = { disabled: true };
+// function excludeFunction() {
+//   data2 = personDatabase.slice();
+//   condition.exclude.forEach((exc) => {
+//     Object.keys(exc).forEach((key) => {
+//       data2.forEach((person) => {
+//         if (person[key] === exc[key]) {
+//           data2.splice(data2.indexOf(person));
+//         }
+//       });
+//     });
+//   });
+//   data2.sort((a, b) => a[condition.sort.sort_by] - b[condition.sort.sort_by]);
+//   console.log(data2);
+// }
+// console.log(excludeFunction());
 
-function excludeFunction() {
-  Object.keys(exclude).forEach((key) => {
-    let result = [];
-    personDatabase.forEach((person) => {
-      if (person[key] !== exclude[key]) {
-        result.push(person);
-      }
-    });
-    personDatabaseExclude = result;
-  });
-  console.log(personDatabaseExclude);
-}
+// const exclude = { disabled: true };
 
-console.log(excludeFunction());
+// function excludeFunction() {
+//   Object.keys(exclude).forEach((key) => {
+//     let result = [];
+//     personDatabase.forEach((person) => {
+//       if (person[key] !== exclude[key]) {
+//         result.push(person);
+//       }
+//     });
+//     personDatabaseExclude = result;
+//   });
+//   console.log(personDatabaseExclude);
+// }
+
 //сделать фильтрацию массива объектов, мы принимаем ключ-значение DISABLET допускается ли человек к работе, и возращаем все варианты, где человек не допускается, значение FALSE
 
 // let newListDelete = [];
@@ -243,3 +256,27 @@ compareArray();
 //Task Four
 
 // const databaseQuiz = [{ ques: 1, question: "Какой спорт Вы предпочитаете?", {quest: 2, question:"Зимние виды спотра", "Летние виды спорта"} }];
+
+function Question(question, response, responses) {
+  this.text = question;
+  this.response = response;
+  this.responses = responses;
+}
+
+const databaseSport = [
+  new Question("Any question 1", "any pesponse 1", [
+    "any pesponse 2",
+    "any pesponse 3",
+  ]),
+  new Question("Any question 2", "any pesponse 2", [
+    "any pesponse 4",
+    "any pesponse 5",
+  ]),
+  new Question("Any question 3", "any pesponse 3"),
+  new Question("Any question 4", "any pesponse 4"),
+  new Question("Any question 5", "any pesponse 5"),
+];
+
+function doAction() {
+  //задается первый вопрос, получаем ответ.
+}
