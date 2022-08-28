@@ -267,7 +267,7 @@ function taskThird() {
     compareArray(x, y, z);
   }
 
-  console.log(userValue());
+  // console.log(userValue());
   document.querySelector(".buttonXYZ").onclick = userValue;
 
   /*
@@ -395,20 +395,6 @@ taskThird();
 //   this.response = response;
 //   this.responses = responses;
 // }
-
-// const databaseSport = [
-//   new Question("Any question 1", "any pesponse 1", [
-//     "any pesponse 2",
-//     "any pesponse 3",
-//   ]),
-//   new Question("Any question 2", "any pesponse 2", [
-//     "any pesponse 4",
-//     "any pesponse 5",
-//   ]),
-//   new Question("Any question 3", "any pesponse 3"),
-//   new Question("Any question 4", "any pesponse 4"),
-//   new Question("Any question 5", "any pesponse 5"),
-// ];
 
 /*
 function doAction() {
