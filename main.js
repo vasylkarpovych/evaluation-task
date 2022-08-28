@@ -267,7 +267,6 @@ function taskThird() {
     compareArray(x, y, z);
   }
 
-  // console.log(userValue());
   document.querySelector(".buttonXYZ").onclick = userValue;
 
   /*
@@ -470,16 +469,3 @@ if (click1) {
 //   document.querySelector(".answer1").innerHTML = databaseSport[1].responses[0];
 //   document.querySelector(".answer2").innerHTML = databaseSport[1].responses[1];
 // }
-
-// Metrics.prototype.toString = function metricsToString() {
-//   return `${this.unit}=${this.value}`;
-// };
-
-// const firstTaskJson =
-//   '[{"unit":"cm","value":100},{"unit":"m","value":1},{"unit":"ft","value":3.28},{"unit":"in","value":39.37}]';
-
-// //сделать чтоб через одну переменную. САМ
-// const database = [];
-// JSON.parse(firstTaskJson).forEach((metric) => {
-//   database.push(new Metrics(metric["unit"], metric["value"]));
-// });
