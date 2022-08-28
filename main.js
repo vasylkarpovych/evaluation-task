@@ -390,35 +390,110 @@ taskThird();
 
 // const databaseQuiz = [{ ques: 1, question: "Какой спорт Вы предпочитаете?", {quest: 2, question:"Зимние виды спотра", "Летние виды спорта"} }];
 
-function Question(question, response, responses) {
-  this.text = question;
-  this.response = response;
-  this.responses = responses;
-}
+// function Question(question, response, responses) {
+//   this.text = question;
+//   this.response = response;
+//   this.responses = responses;
+// }
 
-const databaseSport = [
-  new Question("Any question 1", "any pesponse 1", [
-    "any pesponse 2",
-    "any pesponse 3",
-  ]),
-  new Question("Any question 2", "any pesponse 2", [
-    "any pesponse 4",
-    "any pesponse 5",
-  ]),
-  new Question("Any question 3", "any pesponse 3"),
-  new Question("Any question 4", "any pesponse 4"),
-  new Question("Any question 5", "any pesponse 5"),
-];
+// const databaseSport = [
+//   new Question("Any question 1", "any pesponse 1", [
+//     "any pesponse 2",
+//     "any pesponse 3",
+//   ]),
+//   new Question("Any question 2", "any pesponse 2", [
+//     "any pesponse 4",
+//     "any pesponse 5",
+//   ]),
+//   new Question("Any question 3", "any pesponse 3"),
+//   new Question("Any question 4", "any pesponse 4"),
+//   new Question("Any question 5", "any pesponse 5"),
+// ];
 
+/*
 function doAction() {
-  /*
   1. берем первый объект из массива databaseSport  
   2. выводим вопрос на экран из поля question
   3. выводим вариатнты ответов на экран в кнопки из поля responses
   4. считываем выбор пользователя
   5. находим в databaseSport объект в котором response равен выбору пользователя
   6. повторяем из пункта 2 по 5
+}
 */
+
+const databaseSport = [];
+
+function Questions(question, responses, number) {
+  this.question = question;
+  this.responses = responses;
+  this.number = number;
 }
 
-//
+databaseSport.push(
+  new Questions(
+    "Какой спорт ты выберешь?",
+    ["Зимние виды спорта!", "Летние виды спорта"],
+    1
+  )
+);
+databaseSport.push(
+  new Questions(
+    "Что бы ты предпочел из зимних видов?",
+    ["Лыжи и сноуборд!", "Коньки и санки!"],
+    2
+  )
+);
+databaseSport.push(
+  new Questions(
+    "Что бы ты предпочел из летних видов?",
+    ["Коммандные виды спорта?", "Одиночные виды спорта"],
+    3
+  )
+);
+databaseSport.push(
+  new Questions("Давай все же определимся?", ["Лыжи!", "Сноуборд!"], 4)
+);
+databaseSport.push(
+  new Questions("Давай все же определимся?", ["Коньки!", "Санки!"], 5)
+);
+databaseSport.push(
+  new Questions("Что бы ты выбрал?", ["Игра в футбол!", "Игра в волейбол"], 6)
+);
+databaseSport.push(
+  new Questions("Что бы ты выбрал?", ["Плаванье!", "Бокс"], 7)
+);
+
+console.log(databaseSport);
+
+document.querySelector(".questions").innerHTML = databaseSport[0].question;
+document.querySelector(".answer1").innerHTML = databaseSport[0].responses[0];
+document.querySelector(".answer2").innerHTML = databaseSport[0].responses[1];
+
+let click1, click2;
+
+click1 = document.querySelector(".answer1").onclick;
+click2 = document.querySelector(".answer2").onclick;
+
+if (click1) {
+  document.querySelector(".questions").innerHTML = databaseSport[1].question;
+  document.querySelector(".answer1").innerHTML = databaseSport[1].responses[0];
+  document.querySelector(".answer2").innerHTML = databaseSport[1].responses[1];
+}
+// else {
+//   document.querySelector(".questions").innerHTML = databaseSport[1].question;
+//   document.querySelector(".answer1").innerHTML = databaseSport[1].responses[0];
+//   document.querySelector(".answer2").innerHTML = databaseSport[1].responses[1];
+// }
+
+// Metrics.prototype.toString = function metricsToString() {
+//   return `${this.unit}=${this.value}`;
+// };
+
+// const firstTaskJson =
+//   '[{"unit":"cm","value":100},{"unit":"m","value":1},{"unit":"ft","value":3.28},{"unit":"in","value":39.37}]';
+
+// //сделать чтоб через одну переменную. САМ
+// const database = [];
+// JSON.parse(firstTaskJson).forEach((metric) => {
+//   database.push(new Metrics(metric["unit"], metric["value"]));
+// });
