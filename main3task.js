@@ -218,173 +218,72 @@ console.log(excludeFunction());
 10-ю12 = -2 = -1
 10-ю11 = -1 = -0,5
 10 -ю10,5 = -0,5  
-*/
 
-/*
-<input type="text" class="convert-input" placeholder="cm, m, ft, in ... other"/>
-      <button class="convert-button" style="background-color: greenyellow;">Convert</button><br>
-      
-      let convert = document.querySelector(".convert-input").value;
-      
-      document.querySelector(".convert-button").onclick = convert;
-      */
-// newNumber
+
+*/
+console.log(`Random array [x, y, z]`);
+const userArrayES6 = [0, 0, 0];
+
+const newNumber = userArrayES6.map((user) => {
+  return (userArrayES6[user] = Math.trunc(Math.random() * 100));
+});
+console.log(newNumber);
+
+console.log(`User array [x, y, z]`);
+let x = 10,
+  y = 75,
+  z = 50;
+const userArray = [x, y, z];
+console.log(userArray);
 
 console.log(`TEST`);
-function taskThird() {
-  console.log(`Рандомно созданные координаты нашей точки [x, y, z]`);
-  const randomPoint = [0, 0, 0];
 
-  const newRandomPoint = randomPoint.map((user) => {
-    return (randomPoint[user] = Math.trunc(Math.random() * 100));
-  });
-  console.log(newRandomPoint);
+let user = [7, 99, 57];
+// Это я создал массив, для того, чтоб удобно считать с фиксированными значениями, потом просто его удалю! Пока работаю с фиксированными значниями, когда все будет работать, я просто подставлю числа, что будут сгенирированы случайно
+let ran = [91, 15, 45];
+let xRan = ran[0];
+let yRan = ran[1];
+let zRan = ran[2];
+let calc = 0;
 
-  console.log(`User array [x, y, z]`);
-  let x, y, z;
-  let user = [0, 0, 0];
+//Math.trunc() - обрезает дробную часть числа
+//Math. round() возвращает число, округлённое к ближайшему целому
+// || - логическое или
+// && - логичнсеок и
 
-  let xRan = newRandomPoint[0];
-  let yRan = newRandomPoint[1];
-  let zRan = newRandomPoint[2];
-  let calc = 0;
+console.log("Миссив, что здал пользователь: " + user);
+console.log("Массив, который сгенерировал компъютер: " + ran);
 
-  function userValue() {
-    x = Number(document.querySelector(".inputX").value);
-    y = Number(document.querySelector(".inputY").value);
-    z = Number(document.querySelector(".inputZ").value);
-    document.querySelector(".userPoint").innerHTML = [
-      "Координата по оси X=" + x,
-      "<br>Координата по оси Y=" + y,
-      "<br>Координата по оси Z=" + z,
-    ];
-    user = [x, y, z];
-    console.log(
-      "Начиная вот тут в консоле прога верно работает, только нужно чтоб первый раз не вызывалась функция"
-    );
-    console.log("Пользователь задал: " + user);
-    console.log("Компьютер задал: " + newRandomPoint);
-    compareArray(x, y, z);
-  }
-
-  console.log(userValue());
-  document.querySelector(".buttonXYZ").onclick = userValue;
-
-  /*
-function mostImportant() {
-  x = Number(document.querySelector(".i1").value);
-  y = Number(document.querySelector(".i2").value);
-  z = Number(document.querySelector(".i3").value);
-  document.querySelector(".p").innerHTML = sum(x, y, z);
-  console.log(x, y, z);
-  return x + y + z;
-}
-console.log(mostImportant());
-
-document.querySelector(".b1").onclick = mostImportant;
-
-function sum(value1, value2, value3) {
-  return value1 + value2 + value3;
-}
-  */
-
-  // let user = [x, y, z];
-  // Это я создал массив, для того, чтоб удобно считать с фиксированными значениями, потом просто его удалю! Пока работаю с фиксированными значниями, когда все будет работать, я просто подставлю числа, что будут сгенирированы случайно
-  // let newNumber = [91, 15, 45];
-  // let xRan = newNumber[0];
-  // let yRan = newNumber[1];
-  // let zRan = newNumber[2];
-  // let calc = 0;
-
-  //Math.trunc() - обрезает дробную часть числа
-  //Math. round() возвращает число, округлённое к ближайшему целому
-
-  console.log("Миссив, что здал пользователь: \n" + user);
-  console.log("Массив, который сгенерировал компъютер: \n" + newRandomPoint);
-
-  function compareArray(compareX, compareY, compareZ) {
-    let compareUser = [compareX, compareY, compareZ];
-    //обворачиваем все в цикл, чтоб проверять количество итераций
-    while (
-      compareUser[0] !== newRandomPoint[0] ||
-      compareUser[1] !== newRandomPoint[1] ||
-      compareUser[2] !== newRandomPoint[2]
-    ) {
-      if (
-        compareUser[0] !== newRandomPoint[0] ||
-        compareUser[1] !== newRandomPoint[1] ||
-        compareUser[2] !== newRandomPoint[2]
-      ) {
-        //если массивы разные, выполняем этот блок кода:
-        for (i = 0; i < compareUser.length; i++) {
-          //берем разницу длины между массивом по каждому из элементов, делим на два и отнимаем от от существующего массива, все перезаписываем в новый массив, который будет в два раза ближе к существующему
-          let difference = compareUser[i] - newRandomPoint[i];
-          console.log("Разница: " + difference);
-          // difference < 0 ? Math.trunc(user[i]) : Math.trunc(user[i]);
-          compareUser[i] =
-            difference !== 1
-              ? compareUser[i] - difference / 2
-              : compareUser[i] - difference;
-          compareUser[i] = Math.round(compareUser[i]);
-          // console.log(user[i]);
-          //приводим к целому, округляя значение (я пришел к мысли) нужно сделать отдельную переменную разница, и если разница отрицательная, то записываем с помощью метода round()б а если положительная, то с помощью метода trunc(), запишим все это тернарным оператором:
-          // user[i] = Math.round(user[i]);
-        }
-        console.log("Новый массив: " + compareUser);
-        calc++;
-      } else {
-        console.log(
-          `Какое везение, наша рандомно сгенерированная точка равна точке, что задал пользователь, 100% попадание с первого раза. Сегодня явно твой день, счастливчик!`
-        );
+function compareArray() {
+  //обворачиваем все в цикл, чтоб проверять количество итераций
+  while (user[0] !== ran[0] || user[1] !== ran[1] || user[2] !== ran[2]) {
+    if (user[0] !== ran[0] || user[1] !== ran[1] || user[2] !== ran[2]) {
+      //если массивы разные, выполняем этот блок кода:
+      for (i = 0; i < user.length; i++) {
+        //берем разницу длины между массивом по каждому из элементов, делим на два и отнимаем от от существующего массива, все перезаписываем в новый массив, который будет в два раза ближе к существующему
+        let difference = user[i] - ran[i];
+        console.log("Разница: " + difference);
+        // difference < 0 ? Math.trunc(user[i]) : Math.trunc(user[i]);
+        user[i] =
+          difference !== 1 ? user[i] - difference / 2 : user[i] - difference;
+        user[i] = Math.round(user[i]);
+        console.log(user[i]);
+        //приводим к целому, округляя значение (я пришел к мысли) нужно сделать отдельную переменную разница, и если разница отрицательная, то записываем с помощью метода round()б а если положительная, то с помощью метода trunc(), запишим все это тернарным оператором:
+        // user[i] = Math.round(user[i]);
       }
+      console.log("Новый массив: " + user);
+      calc++;
+      console.log("Количество итераций: " + calc);
+    } else {
+      console.log(
+        `Какое везение, наша рандомно сгенерированная точка равна точке, что задал пользователь, 100% попадание с первого раза. Сегодня явно твой день, счастливчик!`
+      );
     }
-    console.log("Количество итераций: " + calc);
   }
-
-  // оставил, что точно работало, чтоб потом не делать логику заново!!!
-  // function compareArray() {
-  //   //обворачиваем все в цикл, чтоб проверять количество итераций
-  //   while (
-  //     user[0] !== newNumber[0] ||
-  //     user[1] !== newNumber[1] ||
-  //     user[2] !== newNumber[2]
-  //   ) {
-  //     if (
-  //       user[0] !== newNumber[0] ||
-  //       user[1] !== newNumber[1] ||
-  //       user[2] !== newNumber[2]
-  //     ) {
-  //       //если массивы разные, выполняем этот блок кода:
-  //       for (i = 0; i < user.length; i++) {
-  //         //берем разницу длины между массивом по каждому из элементов, делим на два и отнимаем от от существующего массива, все перезаписываем в новый массив, который будет в два раза ближе к существующему
-  //         let difference = user[i] - newNumber[i];
-  //         console.log("Разница: " + difference);
-  //         // difference < 0 ? Math.trunc(user[i]) : Math.trunc(user[i]);
-  //         user[i] =
-  //           difference !== 1 ? user[i] - difference / 2 : user[i] - difference;
-  //         user[i] = Math.round(user[i]);
-  //         // console.log(user[i]);
-  //         //приводим к целому, округляя значение (я пришел к мысли) нужно сделать отдельную переменную разница, и если разница отрицательная, то записываем с помощью метода round()б а если положительная, то с помощью метода trunc(), запишим все это тернарным оператором:
-  //         // user[i] = Math.round(user[i]);
-  //       }
-  //       console.log("Новый массив: " + user);
-  //       calc++;
-  //     } else {
-  //       console.log(
-  //         `Какое везение, наша рандомно сгенерированная точка равна точке, что задал пользователь, 100% попадание с первого раза. Сегодня явно твой день, счастливчик!`
-  //       );
-  //     }
-  //   }
-  //   console.log("Количество итераций: " + calc);
-  // }
-  //У меня по итогу прослема, уверен что связаная с округлением половинок, но выдает почему-то [91, 16, 46] а по идее должно выдавать [91, 16, 46]. Получается когда остаток -1, все работает верно, а когда остаток 1, он ставит на 1 больше, чем мы искали, можно (как вариант) написать условие, что если положительный элемент, то мы просто отнимаем 1. Но у меня уже взравается голова))))
-
-  // document.querySelector(".buttonXYZ").onclick = compareArray;
-
-  // compareArray();
 }
+//У меня по итогу прослема, уверен что связаная с округлением половинок, но выдает почему-то [91, 16, 46] а по идее должно выдавать [91, 16, 46]. Получается когда остаток -1, все работает верно, а когда остаток 1, он ставит на 1 больше, чем мы искали, можно (как вариант) написать условие, что если положительный элемент, то мы просто отнимаем 1. Но у меня уже взравается голова))))
 
-taskThird();
+compareArray();
 
 //Task Four
 

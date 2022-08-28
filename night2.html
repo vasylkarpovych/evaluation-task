@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TaskNight</title>
+  </head>
+  <body>
+    <div class="div-1">
+      <h1>Hello!</h1>
+      <button onclick="hello()">Count</button>
+      <p class="count"></p>
+    </div>
+
+    <script>
+      let count = 0;
+      function hello() {
+        count++;
+        document.querySelector(".count").innerHTML = count;
+        //   alert(count);
+        return count;
+      }
+      counter = hello();
+      console.log(counter);
+    </script>
+  </body>
+</html>
