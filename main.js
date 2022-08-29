@@ -57,35 +57,28 @@ function Person(name, email, user, rating, disabled) {
   this.disabled = disabled;
 }
 
-/*
-const firstTaskJson =
-  '[{"unit":"cm","value":100},{"unit":"m","value":1},{"unit":"ft","value":3.28},{"unit":"in","value":39.37}]';
+const secondTaskJson =
+  '[{"name":"John","email":"john1@mail.com","user":"john1@mail.com","rating":25,"disabled":true},{"name":"John","email":"john2@mail.com","user":"john2@mail.com","rating":23,"disabled":false},{"name":"John","email":"john3@mail.com","user":"john3@mail.com","rating":28,"disabled":false},{"name":"Jane","email":"jane@mail.com","user":"jane@mail.com","rating":27,"disabled":true},{"name":"Mike","email":"mike@mail.com","user":"mike@mail.com","rating":20,"disabled":false},{"name":"Greg","email":"greg@mail.com","user":"greg@mail.com","rating":14,"disabled":false}]';
 
-//сделать чтоб через одну переменную. САМ
-const database = [];
-JSON.parse(firstTaskJson).forEach((metric) => {
-  database.push(new Metrics(metric["unit"], metric["value"]));
+const personDatabase = [];
+JSON.parse(secondTaskJson).forEach((person) => {
+  personDatabase.push(
+    new Person(
+      person["name"],
+      person["email"],
+      person["user"],
+      person["rating"],
+      person["disabled"]
+    )
+  );
 });
-*/
-
-let personDatabase = [
-  new Person("John", "john1@mail.com", "john1@mail.com", 25, true),
-  new Person("John", "john2@mail.com", "john2@mail.com", 23, false),
-  new Person("John", "john3@mail.com", "john3@mail.com", 28, false),
-  new Person("Jane", "jane@mail.com", "jane@mail.com", 27, true),
-  new Person("Mike", "mike@mail.com", "mike@mail.com", 20, false),
-  new Person("Greg", "greg@mail.com", "greg@mail.com", 14, false),
-];
-
-console.log();
 
 Person.prototype.toString = function personToString() {
   return `[${this.name}-${this.email}-${this.user}-${this.rating}-${this.disabled}] <br>`;
 };
 
-const include = [{ name: "John" } /*{ email: "john1@mail.com" }*/];
-// const exclude = [{ name: "John" } /*{ email: "john1@mail.com" }*/];
-const exclude = [{ name: "John" } /*{ email: "john1@mail.com" }*/];
+const include = [{ name: "John" } /*, { email: "john1@mail.com" }*/];
+const exclude = [{ name: "John" } /*, { email: "jane@mail.com" }*/];
 const sort = { sort_by: "rating" };
 const condition = { include, exclude, sort };
 
@@ -212,7 +205,7 @@ function taskThird() {
         );
       }
     }
-    console.log("Количество итераций: " + calc);
+    console.log("Количество итераций, за которые мы шашли координаты: " + calc);
     document.querySelector(".final").innerHTML = calc;
 
     document.querySelector(".randomPoint").innerHTML = newRandomPoint;
@@ -220,127 +213,78 @@ function taskThird() {
 }
 taskThird();
 
-const databaseSport = [];
-
-function Questions(question, responses) {
+function Questions(question, responses, match) {
   this.question = question;
   this.responses = responses;
+  this.match = match;
 }
 
-databaseSport.push(
-  new Questions("Какой спорт Вам больше нравится?", [
-    "Зимние виды спорта!",
-    "Летние виды спорта!",
-  ])
-);
-databaseSport.push(
-  new Questions("Что бы Вы предпочли из зимних видов?", [
-    "Лыжи и сноуборд!",
-    "Коньки и санки!",
-  ])
-);
-databaseSport.push(
-  new Questions("Что бы Вы предпочли из летних видов?", [
-    "Коммандные виды спорта!",
-    "Одиночные виды спорта!",
-  ])
-);
-databaseSport.push(
-  new Questions("Давайте все же определимся? Лыжи или сноуборд?", [
-    "Лыжи!",
-    "Сноуборд!",
-  ])
-);
-databaseSport.push(
-  new Questions("Давайте все же определимся? Коньки или санки?", [
-    "Коньки!",
-    "Санки!",
-  ])
-);
-databaseSport.push(
-  new Questions("Что бы Вы выбрали? Футбол или волейбол?", [
-    "Игра в футбол!",
-    "Игра в волейбол!",
-  ])
-);
-databaseSport.push(
-  new Questions("Что бы Вы выбрали? Плаванье или бокс?", ["Плаванье!", "Бокс!"])
-);
+const sportDatabase = [
+  new Questions(
+    "Какой спорт Вам больше нравится?",
+    ["Зимние виды спорта!", "Летние виды спорта!"],
+    ""
+  ),
+  new Questions(
+    "Что бы Вы предпочли из зимних видов?",
+    ["Лыжи и сноуборд!", "Коньки и санки!"],
+    "Зимние виды спорта!"
+  ),
+  new Questions(
+    "Что бы Вы предпочли из летних видов?",
+    ["Коммандные виды спорта!", "Одиночные виды спорта!"],
+    "Летние виды спорта!"
+  ),
+  new Questions(
+    "Давайте все же определимся? Лыжи или сноуборд?",
+    ["Лыжи!", "Сноуборд!"],
+    "Лыжи и сноуборд!"
+  ),
+  new Questions(
+    "Давайте все же определимся? Коньки или санки?",
+    ["Коньки!", "Санки!"],
+    "Коньки и санки!"
+  ),
+  new Questions(
+    "Что бы Вы выбрали? Футбол или волейбол?",
+    ["Игра в футбол!", "Игра в волейбол!"],
+    "Коммандные виды спорта!"
+  ),
+  new Questions(
+    "Что бы Вы выбрали? Плаванье или бокс?",
+    ["Плаванье!", "Бокс!"],
+    "Одиночные виды спорта!"
+  ),
+];
 
-console.log(databaseSport);
+// console.log(sportDatabase);
 
-function questionnare() {
-  let quest = document.querySelector(".questions");
-  let answer1 = document.querySelector(".answer1");
-  let answer2 = document.querySelector(".answer2");
+//перезапишу в переменные, чтоб проще читать код
+let btnOneDOM = document.querySelector(".buttonAnswer1");
+let btnTwoDOM = document.querySelector(".buttonAnswer2");
 
-  quest.innerHTML = databaseSport[0].question;
-  answer1.innerHTML = databaseSport[0].responses[0];
-  answer2.innerHTML = databaseSport[0].responses[1];
-
-  answer1.onclick = chengeButtonsWinter;
-  answer2.onclick = chengeButtonsSummer;
-
-  function chengeButtonsWinter() {
-    quest.innerHTML = databaseSport[1].question;
-    answer1.innerHTML = databaseSport[1].responses[0];
-    answer2.innerHTML = databaseSport[1].responses[1];
-
-    answer1.onclick = chengeButtonsSkisOrSnowboard;
-    answer2.onclick = chengeButtonsSkatesOrSleds;
-
-    function chengeButtonsSkisOrSnowboard() {
-      quest.innerHTML = databaseSport[3].question;
-      answer1.innerHTML = databaseSport[3].responses[0];
-      answer2.innerHTML = databaseSport[3].responses[1];
-    }
-    function chengeButtonsSkatesOrSleds() {
-      quest.innerHTML = databaseSport[4].question;
-      answer1.innerHTML = databaseSport[4].responses[0];
-      answer2.innerHTML = databaseSport[4].responses[1];
-    }
-  }
-  function chengeButtonsSummer() {
-    quest.innerHTML = databaseSport[2].question;
-    answer1.innerHTML = databaseSport[2].responses[0];
-    answer2.innerHTML = databaseSport[2].responses[1];
-
-    answer1.onclick = chengeButtonsSummerVariant;
-    answer2.onclick = chengeButtonsSwimmingOrBoxing;
-
-    function chengeButtonsSummerVariant() {
-      quest.innerHTML = databaseSport[5].question;
-      answer1.innerHTML = databaseSport[5].responses[0];
-      answer2.innerHTML = databaseSport[5].responses[1];
-    }
-    function chengeButtonsSwimmingOrBoxing() {
-      quest.innerHTML = databaseSport[6].question;
-      answer1.innerHTML = databaseSport[6].responses[0];
-      answer2.innerHTML = databaseSport[6].responses[1];
-
-      answer1.onclick = chengeButtonsSwimming;
-      answer2.onclick = chengeButtonsBoxing;
-
-      function chengeButtonsBoxing() {
-        document.querySelector(".resultSport").innerHTML =
-          "Бокс - это здорово!";
-      }
-
-      function chengeButtonsSwimming() {
-        document.querySelector(".resultSport").innerHTML =
-          "Плаванье - это здорово!";
-      }
-    }
-  }
+function drawQuestion(question) {
+  document.querySelector(".questions").innerHTML = question.question;
+  btnOneDOM.innerHTML = question.responses[0];
+  btnTwoDOM.innerHTML = question.responses[1];
 }
 
-function questionOption() {}
+function whatAnswerQuestion() {
+  drawQuestion(sportDatabase[0]);
+  btnOneDOM.onclick = findFirstQuestion;
+  btnTwoDOM.onclick = findSecondQuestion;
+}
 
-questionnare();
+function findFirstQuestion() {
+  let match = btnOneDOM.innerHTML;
+  let question = sportDatabase.find((question) => question.match === match);
+  drawQuestion(question);
+}
 
-/*
-Понимаю, что сделал то, что не нужно, ты мне это говорил, но я думал, пока буду это делать увижу, что и как тут можно описать функцию! И заметил, что у меня почти все повторяется, кроме индекса моей БД, но как это верно написать, не понимаю, чтоб была одна функция, которая обрабатывала нажатия кнопки и выводила нужные значения...
-Вопроы:
-- даже в моем исполнении, чего у меня в самых вложенных функциях нажимаются кнопки, я ж не делал внутри обработчик onClick. Например если я дохожу до края дерева: Зимние/коньки и санки/ и тут выбираю коньки...по идее не должно ничего происходить, а после нажатия на кнопку коньки меня выкидывает на вопрос под индексом 3 из массива БД
-- подскажи пожалуйста как это реализовать, я хочу ее сделать, могу даже им не отправлять, если ты мне поможешь, как уже ты скажешь. Я просто хочу видеть больше сделанных задач, там быстрее и понимание приходит!
-*/
+function findSecondQuestion() {
+  let match = btnTwoDOM.innerHTML;
+  let question = sportDatabase.find((question) => question.match === match);
+  drawQuestion(question);
+}
+
+whatAnswerQuestion();

@@ -416,97 +416,101 @@ function Questions(question, responses, id) {
   this.id = id;
 }
 
-databaseSport.push(
+sportDatabase.push(
   new Questions(
     "Какой спорт ты выберешь?",
     ["Зимние виды спорта!", "Летние виды спорта!"],
     1
   )
 );
-databaseSport.push(
+sportDatabase.push(
   new Questions(
     "Что бы ты предпочел из зимних видов?",
     ["Лыжи и сноуборд!", "Коньки и санки!"],
-    11
+    "Зимние виды спорта!"
   )
 );
-databaseSport.push(
+sportDatabase.push(
   new Questions(
     "Что бы ты предпочел из летних видов?",
     ["Коммандные виды спорта!", "Одиночные виды спорта!"],
     12
   )
 );
-databaseSport.push(
+sportDatabase.push(
   new Questions("Давай все же определимся?", ["Лыжи!", "Сноуборд!"], 111)
 );
-databaseSport.push(
+sportDatabase.push(
   new Questions("Давай все же определимся?", ["Коньки!", "Санки!"], 112)
 );
-databaseSport.push(
+sportDatabase.push(
   new Questions(
     "Что бы ты выбрал?",
     ["Игра в футбол!", "Игра в волейбол!"],
     121
   )
 );
-databaseSport.push(
+sportDatabase.push(
   new Questions("Что бы ты выбрал?", ["Плаванье!", "Бокс!"], 122)
 );
 
-console.log(databaseSport);
+console.log(sportDatabase);
 
-function questionnare() {
-  let quest = document.querySelector(".questions");
-  let answer1 = document.querySelector(".answer1");
-  let answer2 = document.querySelector(".answer2");
-
-  quest.innerHTML = databaseSport[0].question;
-  answer1.innerHTML = databaseSport[0].responses[0];
-  answer2.innerHTML = databaseSport[0].responses[1];
-
-  answer1.onclick = chengeButtons1;
-  answer2.onclick = chengeButtons2;
-
-  function chengeButtons1() {
-    quest.innerHTML = databaseSport[1].question;
-    answer1.innerHTML = databaseSport[1].responses[0];
-    answer2.innerHTML = databaseSport[1].responses[1];
-
-    answer1.onclick = chengeButtons3;
-    answer2.onclick = chengeButtons4;
-
-    function chengeButtons3() {
-      quest.innerHTML = databaseSport[3].question;
-      answer1.innerHTML = databaseSport[3].responses[0];
-      answer2.innerHTML = databaseSport[3].responses[1];
-    }
-    function chengeButtons4() {
-      quest.innerHTML = databaseSport[4].question;
-      answer1.innerHTML = databaseSport[4].responses[0];
-      answer2.innerHTML = databaseSport[4].responses[1];
-    }
-  }
-  function chengeButtons2() {
-    quest.innerHTML = databaseSport[2].question;
-    answer1.innerHTML = databaseSport[2].responses[0];
-    answer2.innerHTML = databaseSport[2].responses[1];
-
-    answer1.onclick = chengeButtons3;
-    answer2.onclick = chengeButtons4;
-
-    function chengeButtons3() {
-      quest.innerHTML = databaseSport[5].question;
-      answer1.innerHTML = databaseSport[5].responses[0];
-      answer2.innerHTML = databaseSport[5].responses[1];
-    }
-    function chengeButtons4() {
-      quest.innerHTML = databaseSport[6].question;
-      answer1.innerHTML = databaseSport[6].responses[0];
-      answer2.innerHTML = databaseSport[6].responses[1];
-    }
-  }
+function drawQuestion(question) {
+  document;
 }
+
+// function questionnare() {
+//   let quest = document.querySelector(".questions");
+//   let answer1 = document.querySelector(".answer1");
+//   let answer2 = document.querySelector(".answer2");
+
+//   quest.innerHTML = databaseSport[0].question;
+//   answer1.innerHTML = databaseSport[0].responses[0];
+//   answer2.innerHTML = databaseSport[0].responses[1];
+
+//   answer1.onclick = chengeButtons1;
+//   answer2.onclick = chengeButtons2;
+
+//   function chengeButtons1() {
+//     quest.innerHTML = databaseSport[1].question;
+//     answer1.innerHTML = databaseSport[1].responses[0];
+//     answer2.innerHTML = databaseSport[1].responses[1];
+
+//     answer1.onclick = chengeButtons3;
+//     answer2.onclick = chengeButtons4;
+
+//     function chengeButtons3() {
+//       quest.innerHTML = databaseSport[3].question;
+//       answer1.innerHTML = databaseSport[3].responses[0];
+//       answer2.innerHTML = databaseSport[3].responses[1];
+//     }
+//     function chengeButtons4() {
+//       quest.innerHTML = databaseSport[4].question;
+//       answer1.innerHTML = databaseSport[4].responses[0];
+//       answer2.innerHTML = databaseSport[4].responses[1];
+//     }
+//   }
+//   function chengeButtons2() {
+//     quest.innerHTML = databaseSport[2].question;
+//     answer1.innerHTML = databaseSport[2].responses[0];
+//     answer2.innerHTML = databaseSport[2].responses[1];
+
+//     answer1.onclick = chengeButtons3;
+//     answer2.onclick = chengeButtons4;
+
+//     function chengeButtons3() {
+//       quest.innerHTML = databaseSport[5].question;
+//       answer1.innerHTML = databaseSport[5].responses[0];
+//       answer2.innerHTML = databaseSport[5].responses[1];
+//     }
+//     function chengeButtons4() {
+//       quest.innerHTML = databaseSport[6].question;
+//       answer1.innerHTML = databaseSport[6].responses[0];
+//       answer2.innerHTML = databaseSport[6].responses[1];
+//     }
+//   }
+// }
 
 function questionOption() {}
 
