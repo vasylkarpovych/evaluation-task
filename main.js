@@ -27,7 +27,9 @@ function convert() {
   ) {
     document.querySelector(".result").innerHTML =
       (value / database.find((metrics) => metrics.unit === unit).value) *
-      database.find((metrics) => metrics.unit === convert).value;
+        database.find((metrics) => metrics.unit === convert).value +
+      " " +
+      convert;
   } else {
     document.querySelector(".result").innerHTML =
       "Unknown unit. Pelase verify input.";
@@ -408,16 +410,16 @@ function doAction() {
 
 const databaseSport = [];
 
-function Questions(question, responses, number) {
+function Questions(question, responses, id) {
   this.question = question;
   this.responses = responses;
-  this.number = number;
+  this.id = id;
 }
 
 databaseSport.push(
   new Questions(
     "Какой спорт ты выберешь?",
-    ["Зимние виды спорта!", "Летние виды спорта"],
+    ["Зимние виды спорта!", "Летние виды спорта!"],
     1
   )
 );
@@ -425,47 +427,105 @@ databaseSport.push(
   new Questions(
     "Что бы ты предпочел из зимних видов?",
     ["Лыжи и сноуборд!", "Коньки и санки!"],
-    2
+    11
   )
 );
 databaseSport.push(
   new Questions(
     "Что бы ты предпочел из летних видов?",
-    ["Коммандные виды спорта?", "Одиночные виды спорта"],
-    3
+    ["Коммандные виды спорта!", "Одиночные виды спорта!"],
+    12
   )
 );
 databaseSport.push(
-  new Questions("Давай все же определимся?", ["Лыжи!", "Сноуборд!"], 4)
+  new Questions("Давай все же определимся?", ["Лыжи!", "Сноуборд!"], 111)
 );
 databaseSport.push(
-  new Questions("Давай все же определимся?", ["Коньки!", "Санки!"], 5)
+  new Questions("Давай все же определимся?", ["Коньки!", "Санки!"], 112)
 );
 databaseSport.push(
-  new Questions("Что бы ты выбрал?", ["Игра в футбол!", "Игра в волейбол"], 6)
+  new Questions(
+    "Что бы ты выбрал?",
+    ["Игра в футбол!", "Игра в волейбол!"],
+    121
+  )
 );
 databaseSport.push(
-  new Questions("Что бы ты выбрал?", ["Плаванье!", "Бокс"], 7)
+  new Questions("Что бы ты выбрал?", ["Плаванье!", "Бокс!"], 122)
 );
 
 console.log(databaseSport);
 
-document.querySelector(".questions").innerHTML = databaseSport[0].question;
-document.querySelector(".answer1").innerHTML = databaseSport[0].responses[0];
-document.querySelector(".answer2").innerHTML = databaseSport[0].responses[1];
+// document.querySelector(".questions").innerHTML = databaseSport[0].question;
+// document.querySelector(".answer1").innerHTML = databaseSport[0].responses[0];
+// document.querySelector(".answer2").innerHTML = databaseSport[0].responses[1];
 
-let click1, click2;
+// let click1, click2;
 
-click1 = document.querySelector(".answer1").onclick;
-click2 = document.querySelector(".answer2").onclick;
+// document.querySelector(".answer1").onclick = chengeButtons1;
+// document.querySelector(".answer2").onclick = chengeButtons2;
 
-if (click1) {
-  document.querySelector(".questions").innerHTML = databaseSport[1].question;
-  document.querySelector(".answer1").innerHTML = databaseSport[1].responses[0];
-  document.querySelector(".answer2").innerHTML = databaseSport[1].responses[1];
-}
-// else {
+// function chengeButtons1() {
 //   document.querySelector(".questions").innerHTML = databaseSport[1].question;
-//   document.querySelector(".answer1").innerHTML = databaseSport[1].responses[0];
-//   document.querySelector(".answer2").innerHTML = databaseSport[1].responses[1];
 // }
+// function chengeButtons2() {
+//   document.querySelector(".questions").innerHTML = databaseSport[2].question;
+// }
+
+//делаю абстрактное задание, но хоть немного чтоб было похоже на мое:
+
+function questionnare() {
+  let quest = document.querySelector(".questions");
+  let answer1 = document.querySelector(".answer1");
+  let answer2 = document.querySelector(".answer2");
+
+  quest.innerHTML = databaseSport[0].question;
+  answer1.innerHTML = databaseSport[0].responses[0];
+  answer2.innerHTML = databaseSport[0].responses[1];
+
+  answer1.onclick = chengeButtons1;
+  answer2.onclick = chengeButtons2;
+
+  function chengeButtons1() {
+    quest.innerHTML = databaseSport[1].question;
+    answer1.innerHTML = databaseSport[1].responses[0];
+    answer2.innerHTML = databaseSport[1].responses[1];
+
+    answer1.onclick = chengeButtons3;
+    answer2.onclick = chengeButtons4;
+
+    function chengeButtons3() {
+      quest.innerHTML = databaseSport[3].question;
+      answer1.innerHTML = databaseSport[3].responses[0];
+      answer2.innerHTML = databaseSport[3].responses[1];
+    }
+    function chengeButtons4() {
+      quest.innerHTML = databaseSport[4].question;
+      answer1.innerHTML = databaseSport[4].responses[0];
+      answer2.innerHTML = databaseSport[4].responses[1];
+    }
+  }
+  function chengeButtons2() {
+    quest.innerHTML = databaseSport[2].question;
+    answer1.innerHTML = databaseSport[2].responses[0];
+    answer2.innerHTML = databaseSport[2].responses[1];
+
+    answer1.onclick = chengeButtons3;
+    answer2.onclick = chengeButtons4;
+
+    function chengeButtons3() {
+      quest.innerHTML = databaseSport[5].question;
+      answer1.innerHTML = databaseSport[5].responses[0];
+      answer2.innerHTML = databaseSport[5].responses[1];
+    }
+    function chengeButtons4() {
+      quest.innerHTML = databaseSport[6].question;
+      answer1.innerHTML = databaseSport[6].responses[0];
+      answer2.innerHTML = databaseSport[6].responses[1];
+    }
+  }
+}
+
+function questionOption() {}
+
+questionnare();
