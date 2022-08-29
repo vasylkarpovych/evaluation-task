@@ -222,60 +222,49 @@ taskThird();
 
 const databaseSport = [];
 
-function Questions(question, responses, id) {
+function Questions(question, responses) {
   this.question = question;
   this.responses = responses;
-  this.id = id;
 }
 
 databaseSport.push(
-  new Questions(
-    "Какой спорт Вам больше нравится?",
-    ["Зимние виды спорта!", "Летние виды спорта!"],
-    1
-  )
+  new Questions("Какой спорт Вам больше нравится?", [
+    "Зимние виды спорта!",
+    "Летние виды спорта!",
+  ])
 );
 databaseSport.push(
-  new Questions(
-    "Что бы Вы предпочли из зимних видов?",
-    ["Лыжи и сноуборд!", "Коньки и санки!"],
-    11
-  )
+  new Questions("Что бы Вы предпочли из зимних видов?", [
+    "Лыжи и сноуборд!",
+    "Коньки и санки!",
+  ])
 );
 databaseSport.push(
-  new Questions(
-    "Что бы Вы предпочли из летних видов?",
-    ["Коммандные виды спорта!", "Одиночные виды спорта!"],
-    12
-  )
+  new Questions("Что бы Вы предпочли из летних видов?", [
+    "Коммандные виды спорта!",
+    "Одиночные виды спорта!",
+  ])
 );
 databaseSport.push(
-  new Questions(
-    "Давайте все же определимся? Лыжи или сноуборд?",
-    ["Лыжи!", "Сноуборд!"],
-    111
-  )
+  new Questions("Давайте все же определимся? Лыжи или сноуборд?", [
+    "Лыжи!",
+    "Сноуборд!",
+  ])
 );
 databaseSport.push(
-  new Questions(
-    "Давайте все же определимся? Коньки или санки?",
-    ["Коньки!", "Санки!"],
-    112
-  )
+  new Questions("Давайте все же определимся? Коньки или санки?", [
+    "Коньки!",
+    "Санки!",
+  ])
 );
 databaseSport.push(
-  new Questions(
-    "Что бы Вы выбрали? Футбол или волейбол?",
-    ["Игра в футбол!", "Игра в волейбол!"],
-    121
-  )
+  new Questions("Что бы Вы выбрали? Футбол или волейбол?", [
+    "Игра в футбол!",
+    "Игра в волейбол!",
+  ])
 );
 databaseSport.push(
-  new Questions(
-    "Что бы Вы выбрали? Плаванье или бокс?",
-    ["Плаванье!", "Бокс!"],
-    122
-  )
+  new Questions("Что бы Вы выбрали? Плаванье или бокс?", ["Плаванье!", "Бокс!"])
 );
 
 console.log(databaseSport);
@@ -289,45 +278,58 @@ function questionnare() {
   answer1.innerHTML = databaseSport[0].responses[0];
   answer2.innerHTML = databaseSport[0].responses[1];
 
-  answer1.onclick = chengeButtons1;
-  answer2.onclick = chengeButtons2;
+  answer1.onclick = chengeButtonsWinter;
+  answer2.onclick = chengeButtonsSummer;
 
-  function chengeButtons1() {
+  function chengeButtonsWinter() {
     quest.innerHTML = databaseSport[1].question;
     answer1.innerHTML = databaseSport[1].responses[0];
     answer2.innerHTML = databaseSport[1].responses[1];
 
-    answer1.onclick = chengeButtons3;
-    answer2.onclick = chengeButtons4;
+    answer1.onclick = chengeButtonsSkisOrSnowboard;
+    answer2.onclick = chengeButtonsSkatesOrSleds;
 
-    function chengeButtons3() {
+    function chengeButtonsSkisOrSnowboard() {
       quest.innerHTML = databaseSport[3].question;
       answer1.innerHTML = databaseSport[3].responses[0];
       answer2.innerHTML = databaseSport[3].responses[1];
     }
-    function chengeButtons4() {
+    function chengeButtonsSkatesOrSleds() {
       quest.innerHTML = databaseSport[4].question;
       answer1.innerHTML = databaseSport[4].responses[0];
       answer2.innerHTML = databaseSport[4].responses[1];
     }
   }
-  function chengeButtons2() {
+  function chengeButtonsSummer() {
     quest.innerHTML = databaseSport[2].question;
     answer1.innerHTML = databaseSport[2].responses[0];
     answer2.innerHTML = databaseSport[2].responses[1];
 
-    answer1.onclick = chengeButtons3;
-    answer2.onclick = chengeButtons4;
+    answer1.onclick = chengeButtonsSummerVariant;
+    answer2.onclick = chengeButtonsSwimmingOrBoxing;
 
-    function chengeButtons3() {
+    function chengeButtonsSummerVariant() {
       quest.innerHTML = databaseSport[5].question;
       answer1.innerHTML = databaseSport[5].responses[0];
       answer2.innerHTML = databaseSport[5].responses[1];
     }
-    function chengeButtons4() {
+    function chengeButtonsSwimmingOrBoxing() {
       quest.innerHTML = databaseSport[6].question;
       answer1.innerHTML = databaseSport[6].responses[0];
       answer2.innerHTML = databaseSport[6].responses[1];
+
+      answer1.onclick = chengeButtonsSwimming;
+      answer2.onclick = chengeButtonsBoxing;
+
+      function chengeButtonsBoxing() {
+        document.querySelector(".resultSport").innerHTML =
+          "Бокс - это здорово!";
+      }
+
+      function chengeButtonsSwimming() {
+        document.querySelector(".resultSport").innerHTML =
+          "Плаванье - это здорово!";
+      }
     }
   }
 }
