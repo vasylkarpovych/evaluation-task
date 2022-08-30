@@ -86,7 +86,6 @@ console.log(personDatabase);
 document.querySelector(".personDatabase").innerHTML = [personDatabase];
 
 //сделать фильтрацию массива объектов, мы принимаем ключ-значение NAME и возращаем результат все варианты электронной почты этого имени
-
 function includeFunction() {
   let resultInclude = personDatabase.slice();
   condition.include.forEach((inc) => {
@@ -140,7 +139,6 @@ function taskThird() {
   });
   console.log(newRandomPoint);
 
-  console.log(`User array [x, y, z]`);
   let x, y, z;
   let user = [0, 0, 0];
 
@@ -160,15 +158,10 @@ function taskThird() {
     ];
     user = [x, y, z];
 
-    // console.log("Пользователь задал: " + user);
-    // console.log("Компьютер задал: " + newRandomPoint);
     compareArray(x, y, z);
   }
 
   document.querySelector(".buttonXYZ").onclick = userValue;
-
-  // console.log("Миссив, что здал пользователь: \n" + user);
-  console.log("Массив, который сгенерировал компъютер: \n" + newRandomPoint);
 
   function compareArray(compareX, compareY, compareZ) {
     let compareUser = [compareX, compareY, compareZ];
