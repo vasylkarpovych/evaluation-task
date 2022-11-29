@@ -1,25 +1,25 @@
 "use strict";
 
-// function getTimeFromMinutes(time) {
-//   if (typeof time !== "number" || !Number.isInteger(time) || time < 0) {
-//     return "Ошибка, проверьте данные";
-//   }
-//   let hour = Math.ceil(time / 60);
-//   let min = ((time / 60) % 1) * 60;
+function getTimeFromMinutes(time) {
+  if (typeof time !== "number" || !Number.isInteger(time) || time < 0) {
+    return "Ошибка, проверьте данные";
+  }
+  let hour = Math.trunc(time / 60);
+  let min = Math.trunc(((time / 60) % 1) * 60);
 
-//   if (hour === 1 || hour >= 21) {
-//     return `Это ${hour} час и ${min} минут`;
-//   } else if (hour === 0 || (hour >= 5 && hour <= 20)) {
-//     return `Это ${hour} часов и ${min} минут`;
-//   } else if (hour >= 2 && hour <= 4) {
-//     return `Это ${hour} часa и ${min} минут`;
-//   }
-// }
+  if (hour === 1 || hour >= 21) {
+    return `Это ${hour} час и ${min} минут`;
+  } else if (hour === 0 || (hour >= 5 && hour <= 20)) {
+    return `Это ${hour} часов и ${min} минут`;
+  } else if (hour >= 2 && hour <= 4) {
+    return `Это ${hour} часа и ${min} минут`;
+  }
+}
 
-// console.log(getTimeFromMinutes(150));
-// console.log(getTimeFromMinutes(50));
-// console.log(getTimeFromMinutes(0));
-// console.log(getTimeFromMinutes(-150));
+console.log(getTimeFromMinutes(150));
+console.log(getTimeFromMinutes(50));
+console.log(getTimeFromMinutes(0));
+console.log(getTimeFromMinutes(-150));
 
 // 0 часов
 // 1 час
