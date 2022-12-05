@@ -1,6 +1,6 @@
 "use strict";
 
-// personalPlanPeter.showAgeAndLangs(personalPlanPeter)
+// personalPlanPeter.showAgeAndLangs(personalPlanPeter);
 // => 'Мне 29 и я владею языками: RU ENG'
 
 const personalPlanPeter = {
@@ -23,7 +23,7 @@ const personalPlanPeter = {
   },
 };
 
-personalPlanPeter.showAgeAndLangs(personalPlanPeter);
+console.log(personalPlanPeter.showAgeAndLangs(personalPlanPeter));
 
 function showExperience(plan) {
   // первое решение циклами {FOR IN}
