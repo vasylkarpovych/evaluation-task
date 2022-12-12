@@ -34,20 +34,45 @@ advertising.forEach((item) => {
 });
 
 genre.textContent = "ДРАМА";
-// genre.innerHTML = '<div class="promo__genre">ДРАМА</div>';
 
-poster.style.backgroundImage = "url('./img/bg.jpg')";
+poster.style.backgroundImage = 'url("./img/bg.jpg")';
+
+movieDB.movies.sort();
 
 films.innerHTML = "";
 
-movieDB.movies.sort();
-movieDB.movies.forEach((item, i) => {
+movieDB.movies.forEach((film, i) => {
   films.innerHTML += `<li class='promo__interactive-item'>${
     i + 1
-  }. ${item}<div class='delete'></div></li>`;
+  }. ${film}<div class='delete'></div></li>`;
 });
 
-console.log(films);
+// <li class="promo__interactive-item">ЛОГАН<div class="delete"></div></li>
+
+// const advertising = document.querySelectorAll(".promo__adv img"),
+//   poster = document.querySelector(".promo__bg"),
+//   genre = poster.querySelector(".promo__genre"),
+//   films = document.querySelector(".promo__interactive-list");
+
+// advertising.forEach((item) => {
+//   item.remove();
+// });
+
+// genre.textContent = "ДРАМА";
+// // genre.innerHTML = '<div class="promo__genre">ДРАМА</div>';
+
+// poster.style.backgroundImage = "url('./img/bg.jpg')";
+
+// films.innerHTML = "";
+
+// movieDB.movies.sort();
+// movieDB.movies.forEach((item, i) => {
+//   films.innerHTML += `<li class='promo__interactive-item'>${
+//     i + 1
+//   }. ${item}<div class='delete'></div></li>`;
+// });
+
+// console.log(films);
 
 /*
   films.innerHTML = "<li class='promo__interactive-item'>ЛОГАН<div class='delete'></div></li>"
